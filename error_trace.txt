@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "D:\akul\triage_ai_project\reproduce_issue.py", line 22, in <module>
+    result = predict_risk(sample_patient)
+  File "D:\akul\triage_ai_project\risk_engine.py", line 65, in predict_risk
+    probs = model.predict_proba(df)[0]
+            ~~~~~~~~~~~~~~~~~~~^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\xgboost\sklearn.py", line 1921, in predict_proba
+    class_probs = super().predict(
+        X=X,
+    ...<2 lines>...
+        iteration_range=iteration_range,
+    )
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\xgboost\core.py", line 751, in inner_f
+    return func(**kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\xgboost\sklearn.py", line 1463, in predict
+    test = DMatrix(
+        X,
+    ...<4 lines>...
+        enable_categorical=self.enable_categorical,
+    )
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\xgboost\core.py", line 751, in inner_f
+    return func(**kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\xgboost\core.py", line 976, in __init__
+    handle, feature_names, feature_types = dispatch_data_backend(
+                                           ~~~~~~~~~~~~~~~~~~~~~^
+        data=data,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        data_split_mode=data_split_mode,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\site-packages\xgboost\data.py", line 1493, in dispatch_data_backend
+    raise TypeError("Not supported type for data." + str(type(data)))
+TypeError: Not supported type for data.<class 'NoneType'>

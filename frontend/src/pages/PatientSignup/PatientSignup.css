@@ -1,0 +1,230 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PATIENT SIGNUP (Premium Split Layout)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.ps-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+}
+
+/* ─── Generic Button (Back) ─── */
+.back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    /* Light on dark background */
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #fff;
+}
+
+/* ─── Left Panel (Branding) ─── */
+.ps-left {
+    width: 480px;
+    /* Slight wider for modern feel */
+    flex-shrink: 0;
+    background: #111827;
+    /* Deep Navy */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.ps-left-content {
+    color: #fff;
+    max-width: 320px;
+}
+
+.ps-left-icon {
+    font-size: 1.5rem;
+    color: #fbbf24;
+    /* Gold/Amber */
+    display: block;
+    margin-bottom: 24px;
+}
+
+.ps-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+
+.ps-left p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+.ps-left-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 32px 0;
+}
+
+.ps-left-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fbbf24;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* ─── Right Panel (Form) ─── */
+.ps-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: #fdfbf7;
+    /* Porcelain */
+    overflow-y: auto;
+    /* Allow scrolling if form is tall */
+}
+
+.ps-card {
+    width: 100%;
+    max-width: 420px;
+}
+
+.ps-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.ps-card-sub {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 32px;
+}
+
+/* Form Styles */
+.ps-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #111827;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.ps-submit {
+    margin-top: 12px;
+    padding: 14px;
+    width: 100%;
+    border-radius: 8px;
+    background: #111827;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ps-submit:hover {
+    background: #1f2937;
+}
+
+.ps-error {
+    background: #fef2f2;
+    color: #dc2626;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+    border: 1px solid #fecaca;
+}
+
+/* Footer Link */
+.ps-footer-text {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.ps-link-btn {
+    background: none;
+    border: none;
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+    margin-left: 4px;
+    text-decoration: underline;
+}
+
+.ps-link-btn:hover {
+    color: #2563eb;
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

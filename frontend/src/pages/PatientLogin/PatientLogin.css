@@ -1,0 +1,184 @@
+.pl-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+}
+
+.pl-left {
+    width: 420px;
+    flex-shrink: 0;
+    background: #111827;
+    /* Ink */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+}
+
+.pl-left-content {
+    color: #fff;
+    max-width: 320px;
+}
+
+.pl-left-icon {
+    font-size: 1.25rem;
+    color: #fbbf24;
+    /* Gold */
+    display: block;
+    margin-bottom: 24px;
+}
+
+.pl-left-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.pl-left-content p {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.6;
+}
+
+.pl-left-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    margin: 28px 0;
+}
+
+.pl-left-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #fbbf24;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.pl-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: #fdfbf7;
+    /* Porcelain */
+}
+
+.pl-card {
+    width: 100%;
+    max-width: 400px;
+}
+
+.pl-card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    color: #111827;
+}
+
+.pl-card-sub {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+.pl-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #111827;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.1);
+}
+
+.pl-submit {
+    width: 100%;
+    margin-top: 8px;
+    background: #111827;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.pl-submit:hover {
+    background: #1f2937;
+}
+
+.pl-footer-text {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.pl-link-btn {
+    background: none;
+    border: none;
+    color: #111827;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+    text-decoration: underline;
+    margin-left: 4px;
+}
+
+.pl-link-btn:hover {
+    color: #2563eb;
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

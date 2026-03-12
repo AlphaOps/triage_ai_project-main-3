@@ -1,0 +1,606 @@
+/* ═══════════════════════════════════════════════════════════════════
+   SHOWCASE SECTION — Exact HappyRobot.ai Duplicate
+   Solid dark bg block (no gradient/blur), thick bezel, tall tablet
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sc-section {
+    padding: 0;
+    position: relative;
+    background: #f9f6f0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   TOP SPLIT: Headline (left) + Feature Cards 2×2 (right)
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sc-top-split {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sc-top-split.sc-animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sc-top-left {
+    padding-top: 12px;
+}
+
+.sc-label {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b7280;
+    display: block;
+    margin-bottom: 28px;
+}
+
+.sc-headline {
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-size: 3.25rem;
+    font-weight: 400;
+    color: #111827;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.sc-headline-accent {
+    color: #9ca3af;
+    font-style: normal;
+}
+
+.sc-top-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.sc-feature-card {
+    padding: 28px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    border-bottom: 1px solid #e5e7eb;
+    border-right: 1px solid #e5e7eb;
+}
+
+.sc-feature-card:nth-child(2),
+.sc-feature-card:nth-child(4) {
+    border-right: none;
+}
+
+.sc-feature-card:nth-child(3),
+.sc-feature-card:nth-child(4) {
+    border-bottom: none;
+}
+
+.sc-feature-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+
+.sc-feature-text h4 {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+}
+
+.sc-feature-text p {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.8125rem;
+    color: #9ca3af;
+    line-height: 1.55;
+    margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   TABLET — HappyRobot Exact: Solid Dark Block, No Gradient
+   Thick premium bezel, very tall tablet
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sc-tablet-wrapper {
+    opacity: 0;
+    transform: translateY(60px) scale(0.97);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.sc-tablet-wrapper.sc-tablet-animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.sc-tablet-bg {
+    /* Clean light background — no dark block */
+    background: transparent;
+    padding: 20px 0 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.sc-tablet-device {
+    width: 90%;
+    max-width: 1100px;
+    /* Clean white card with subtle shadow — no heavy bezel */
+    background: #fff;
+    border-radius: 16px;
+    padding: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.06),
+        0 4px 16px rgba(0, 0, 0, 0.04);
+    position: relative;
+}
+
+.sc-bezel-top {
+    height: 0;
+    display: none;
+}
+
+.sc-bezel-camera {
+    display: none;
+}
+
+.sc-screen {
+    background: #f8f7f4;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sc-track {
+    display: flex;
+    width: 200%;
+    transition: transform 0.08s linear;
+    will-change: transform;
+}
+
+.sc-slide {
+    width: 50%;
+    flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   CSS-RENDERED UI PANELS — Taller (600px) for HappyRobot scale
+   ═══════════════════════════════════════════════════════════════════ */
+
+.sc-ui-panel {
+    display: flex;
+    height: 600px;
+    /* Much taller — matching HappyRobot's tall display */
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.sc-ui-sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    background: #1a1815;
+    color: #fff;
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sc-ui-sidebar.hospital {
+    background: #141210;
+}
+
+.sc-ui-sidebar-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0 22px;
+    margin-bottom: 36px;
+    color: #fdfbf7;
+    letter-spacing: -0.01em;
+}
+
+.sc-ui-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sc-ui-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 22px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.35);
+    cursor: default;
+    border-left: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.sc-ui-nav-item.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: #c9a96e;
+}
+
+.sc-ui-main {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: #fdfcf9;
+    overflow: hidden;
+}
+
+.sc-ui-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+}
+
+.sc-ui-topbar h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+.sc-ui-user-badge {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    background: #f3f4f6;
+    color: #374151;
+    padding: 5px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+}
+
+/* Patient Assessment */
+.sc-ui-stepper-bar {
+    display: flex;
+    gap: 8px;
+    padding: 16px 28px;
+    border-bottom: 1px solid rgba(17, 24, 39, 0.04);
+}
+
+.sc-ui-step-pill {
+    font-size: 0.625rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #f3f4f6;
+    color: #9ca3af;
+}
+
+.sc-ui-step-pill.done {
+    background: #1a1815;
+    color: #fff;
+}
+
+.sc-ui-step-pill.active {
+    background: #c9a96e;
+    color: #fff;
+}
+
+.sc-ui-form-area {
+    padding: 28px 28px;
+    flex: 1;
+}
+
+.sc-ui-form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 16px 0;
+}
+
+.sc-ui-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.sc-ui-chip {
+    font-size: 0.6875rem;
+    padding: 7px 16px;
+    border-radius: 20px;
+    background: #fff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    font-weight: 500;
+    cursor: default;
+}
+
+.sc-ui-chip.selected {
+    background: #1a1815;
+    color: #fff;
+    border-color: #1a1815;
+}
+
+.sc-ui-input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.sc-ui-field span {
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.sc-ui-field-val {
+    font-size: 0.8125rem;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #111827;
+    background: #fff;
+}
+
+.sc-ui-btn-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.sc-ui-btn-back {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b7280;
+    background: none;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 10px 24px;
+    cursor: default;
+}
+
+.sc-ui-btn-next {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    background: #1a1815;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    cursor: default;
+}
+
+/* Hospital Dashboard */
+.sc-ui-stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(17, 24, 39, 0.04);
+}
+
+.sc-ui-stat {
+    text-align: center;
+}
+
+.sc-ui-stat strong {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: #111827;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.sc-ui-stat span {
+    font-size: 0.5625rem;
+    color: #9ca3af;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.sc-ui-table {
+    padding: 0 28px 16px;
+    flex: 1;
+}
+
+.sc-ui-table-head {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1.8fr 1fr 0.5fr;
+    padding: 14px 0;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.sc-ui-table-row {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1.8fr 1fr 0.5fr;
+    padding: 13px 0;
+    font-size: 0.75rem;
+    color: #374151;
+    border-bottom: 1px solid #f9fafb;
+    align-items: center;
+}
+
+.sc-ui-table-row:last-child {
+    border-bottom: none;
+}
+
+.sc-ui-patient-name {
+    font-weight: 600;
+    color: #111827;
+}
+
+.sc-ui-risk-badge {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 12px;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    width: fit-content;
+}
+
+.sc-ui-risk-badge.high {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.sc-ui-risk-badge.medium {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.sc-ui-risk-badge.low {
+    background: #f0fdf4;
+    color: #16a34a;
+}
+
+.sc-ui-action-dots {
+    font-size: 1rem;
+    color: #d1d5db;
+    letter-spacing: 2px;
+    cursor: default;
+    text-align: right;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 960px) {
+    .sc-top-split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 80px 32px 60px;
+    }
+
+    .sc-headline {
+        font-size: 2.25rem;
+    }
+
+    .sc-tablet-device {
+        width: 94%;
+    }
+
+    .sc-ui-panel {
+        height: 480px;
+    }
+
+    .sc-ui-sidebar {
+        width: 160px;
+    }
+}
+
+@media (max-width: 640px) {
+    .sc-section {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .sc-top-split {
+        padding: 60px 20px 40px;
+    }
+
+    .sc-headline {
+        font-size: 1.75rem;
+    }
+
+    .sc-top-right {
+        grid-template-columns: 1fr;
+    }
+
+    .sc-feature-card {
+        border-right: none !important;
+    }
+
+    .sc-feature-card:nth-child(3) {
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .sc-tablet-bg {
+        padding: 40px 0 0;
+    }
+
+    .sc-tablet-device {
+        width: 96%;
+        border-radius: 14px 14px 0 0;
+        padding: 10px 10px 0 10px;
+    }
+
+    .sc-ui-panel {
+        height: 380px;
+    }
+
+    .sc-ui-sidebar {
+        width: 120px;
+    }
+
+    .sc-ui-sidebar-logo {
+        font-size: 0.6875rem;
+        padding: 0 14px;
+    }
+
+    .sc-ui-nav-item {
+        font-size: 0.625rem;
+        padding: 8px 14px;
+        gap: 6px;
+    }
+
+    .sc-ui-nav-item svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    .sc-ui-topbar h3 {
+        font-size: 0.875rem;
+    }
+
+    .sc-ui-chip {
+        font-size: 0.5625rem;
+        padding: 5px 10px;
+    }
+
+    .sc-ui-table-head,
+    .sc-ui-table-row {
+        font-size: 0.5625rem;
+    }
+}

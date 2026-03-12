@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import './variables.css';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(17, 24, 39, 0.08);
+    border-radius: 99px;
+}
+
+/* ─── Animations ─── */
+.fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.6s var(--ease-out) forwards;
+}
+
+.fade-in-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.3s;
+}
+
+.fade-in-delay-4 {
+    animation-delay: 0.4s;
+}
+
+.fade-in-delay-5 {
+    animation-delay: 0.5s;
+}
+
+.fade-in-delay-6 {
+    animation-delay: 0.6s;
+}
+
+.fade-in-delay-7 {
+    animation-delay: 0.7s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse-soft {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ─── Shared Form Styles ─── */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.form-input {
+    width: 100%;
+    height: 52px;
+    padding: 0 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.form-input:focus {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.04);
+}
+
+.form-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+.form-select {
+    appearance: none;
+    width: 100%;
+    height: 52px;
+    padding: 0 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    background: var(--bg-elevated) url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 20px center;
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.form-select:focus {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.04);
+}
+
+/* ─── Button: Primary (Ink) ─── */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 36px;
+    border-radius: var(--radius-md);
+    background: var(--ink);
+    color: var(--text-inverse);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+    transition: all var(--duration-normal) var(--ease-out);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ─── Button: Secondary (Outlined) ─── */
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 52px;
+    padding: 0 36px;
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.btn-secondary:hover {
+    background: var(--ink);
+    color: var(--text-inverse);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+}
+
+/* ─── Back Button ─── */
+.back-btn {
+    position: absolute;
+    top: 32px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    z-index: 20;
+    transition: color var(--duration-fast);
+}
+
+.back-btn:hover {
+    color: var(--text-primary);
+}
+
+/* ─── Card Surface ─── */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ─── Grid Container ─── */
+.grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
+/* ─── Page Transitions ─── */
+.page-transition {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Step Slide Animation ─── */
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slide-in-right {
+    animation: slideInFromRight 0.35s var(--ease-out) forwards;
+}
+
+.slide-in-left {
+    animation: slideInFromLeft 0.35s var(--ease-out) forwards;
+}
+
+/* ─── Message Stagger Animation ─── */
+@keyframes messageIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.msg-enter {
+    animation: messageIn 0.3s var(--ease-out) forwards;
+}

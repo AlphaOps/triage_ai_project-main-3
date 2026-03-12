@@ -1,0 +1,485 @@
+/* ═══════════════════════════════════════════════════════════════════
+   PREMIUM RISK RESULT (Framer-Style)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --bg-page: #FDFBF7;
+    /* Cream/Off-white base */
+    --ink: #111827;
+    --text-sec: #4B5563;
+    --text-ter: #9CA3AF;
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-surface: rgba(255, 255, 255, 0.7);
+    --shadow-premium:
+        0 4px 6px -1px rgba(0, 0, 0, 0.02),
+        0 10px 15px -3px rgba(0, 0, 0, 0.04),
+        0 20px 40px -4px rgba(0, 0, 0, 0.04);
+}
+
+.rr-page {
+    width: 100vw;
+    min-height: 100vh;
+    background: var(--bg-page);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    padding: 40px 20px 120px;
+    /* Added bottom padding to clear fixed action bar */
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.rr-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ─── 1. Hero Status Card ─── */
+.rr-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 48px;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-premium {
+    background: var(--glass-surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: 32px;
+    box-shadow: var(--shadow-premium);
+}
+
+.rr-hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 60%;
+    z-index: 2;
+}
+
+.rr-hero-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.rr-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--text-ter);
+    background: rgba(0, 0, 0, 0.03);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.rr-timestamp {
+    font-size: 0.875rem;
+    color: var(--text-ter);
+}
+
+.rr-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+}
+
+.rr-status-display {
+    margin-top: 8px;
+}
+
+.rr-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+}
+
+.rr-status-badge.high {
+    background: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+.rr-status-badge.medium {
+    background: rgba(245, 158, 11, 0.1);
+    color: #B45309;
+}
+
+.rr-status-badge.low {
+    background: rgba(16, 185, 129, 0.1);
+    color: #047857;
+}
+
+.rr-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+.rr-hero-desc {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--text-sec);
+}
+
+.rr-hero-visual {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.rr-ring {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 40px solid currentColor;
+    opacity: 0.1;
+    filter: blur(40px);
+}
+
+.rr-ring.high {
+    color: #EF4444;
+}
+
+.rr-ring.medium {
+    color: #F59E0B;
+}
+
+.rr-ring.low {
+    color: #10B981;
+}
+
+
+/* ─── 2. Split Grid ─── */
+.rr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Equal split */
+    gap: 24px;
+}
+
+.rr-panel {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rr-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.rr-panel-header .icon {
+    font-size: 1.25rem;
+}
+
+.rr-panel-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.rr-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rr-text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--text-sec);
+}
+
+/* Factors & Tags */
+.rr-factors-box label,
+.rr-symptoms-list label,
+.rr-recommendation label,
+.rr-action-box label,
+.rr-vitals-preview label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-ter);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.rr-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rr-tag {
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.8125rem;
+    color: var(--text-sec);
+    font-weight: 500;
+}
+
+/* Right Panel Elements */
+.rr-dept-pill {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #111827;
+    color: #fff;
+    border-radius: 99px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.rr-vitals-row {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+}
+
+.rr-vital-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.rr-vital-mini span {
+    font-size: 0.75rem;
+    color: var(--text-ter);
+    text-transform: uppercase;
+}
+
+.rr-vital-mini strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.125rem;
+    color: var(--ink);
+}
+
+/* ─── 3. Confidence Strip ─── */
+.rr-confidence-strip {
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.rr-conf-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rr-conf-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-sec);
+}
+
+.rr-conf-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.rr-conf-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.rr-conf-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.rr-disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-ter);
+    margin-top: -8px;
+    opacity: 0.8;
+}
+
+/* ─── 4. Action Bar ─── */
+.rr-actions-bar {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    padding: 12px 24px;
+    border-radius: 99px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 100;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--text-sec);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0 8px;
+    transition: color 0.2s;
+}
+
+.btn-text:hover {
+    color: var(--ink);
+}
+
+.rr-actions-right {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-glass {
+    background: rgba(0, 0, 0, 0.04);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 99px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-glass:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary-glow {
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 99px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.3);
+    transition: transform 0.2s;
+}
+
+.btn-primary-glow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.4);
+}
+
+/* Animation Keys */
+.rr-page.animate-in .card-premium {
+    animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.rr-hero {
+    animation-delay: 0.1s;
+}
+
+.rr-panel:first-child {
+    animation-delay: 0.2s;
+}
+
+.rr-panel:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.rr-confidence-strip {
+    animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .rr-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rr-hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px;
+    }
+
+    .rr-hero-content {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .rr-hero-header {
+        justify-content: center;
+    }
+
+    .rr-actions-bar {
+        width: 90%;
+        justify-content: space-between;
+        padding: 16px;
+        bottom: 16px;
+        flex-wrap: wrap;
+        border-radius: 24px;
+    }
+
+    .rr-actions-right {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 8px;
+    }
+
+    .btn-text {
+        display: none;
+    }
+
+    /* Hide back text on mobile, rely on browser back */
+}

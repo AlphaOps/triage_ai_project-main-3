@@ -1,0 +1,980 @@
+/* ═══════════════════════════════════════════════════════════
+   Voice Agent — Full-Screen Medical Voice Interaction
+   Siri-level premium. Clinical intelligence. Old-money calm.
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Page ─── */
+.va-page {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    animation: vaPageIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes vaPageIn {
+    from {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ─── Top Bar ─── */
+.va-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.va-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.va-back {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s var(--ease-out);
+}
+
+.va-back:hover {
+    border-color: var(--border-strong);
+    color: var(--ink);
+    transform: scale(1.04);
+}
+
+.va-label {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.01em;
+}
+
+.va-beta {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    background: rgba(214, 184, 135, 0.12);
+    padding: 2px 7px;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+.va-findings-btn {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.25s var(--ease-out);
+}
+
+.va-findings-btn:hover {
+    border-color: var(--border-strong);
+    color: var(--ink);
+}
+
+.va-findings-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--text-inverse);
+}
+
+.va-findings-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.625rem;
+    font-weight: 700;
+    background: var(--evergreen);
+    color: #fff;
+    line-height: 1;
+}
+
+.va-findings-btn.active .va-findings-count {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Center Stage ─── */
+.va-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 32px;
+    position: relative;
+    gap: 0;
+}
+
+/* ─── Orb Container ─── */
+.va-orb-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 32px;
+}
+
+/* ─── Orb Halo ─── */
+.va-orb-halo {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(147, 130, 200, 0.06) 0%, transparent 70%);
+    transition: all 1s cubic-bezier(0.4, 0, 0.6, 1);
+    opacity: 0;
+}
+
+.va-orb-container.listening .va-orb-halo {
+    opacity: 1;
+    inset: -30px;
+    background: radial-gradient(circle, rgba(31, 61, 58, 0.08) 0%, transparent 70%);
+    animation: haloBreath 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.va-orb-container.thinking .va-orb-halo {
+    opacity: 1;
+    inset: -25px;
+    animation: haloShimmer 1.5s ease-in-out infinite;
+}
+
+.va-orb-container.speaking .va-orb-halo {
+    opacity: 1;
+    inset: -28px;
+    background: radial-gradient(circle, rgba(147, 130, 200, 0.1) 0%, transparent 70%);
+    animation: haloBreath 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes haloBreath {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+}
+
+@keyframes haloShimmer {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.05) rotate(3deg);
+        opacity: 1;
+    }
+}
+
+/* ─── Orb ─── */
+.va-orb {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(145deg,
+            #c8bfe8 0%,
+            #a8b4d4 25%,
+            #b0c4d8 50%,
+            #c4b8d8 75%,
+            #d4c8e8 100%);
+    box-shadow:
+        0 8px 40px rgba(147, 130, 200, 0.15),
+        0 2px 12px rgba(147, 130, 200, 0.08),
+        inset 0 -2px 10px rgba(255, 255, 255, 0.3),
+        inset 0 2px 10px rgba(147, 130, 200, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.6, 1);
+    overflow: hidden;
+}
+
+.va-orb-inner {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%,
+            rgba(255, 255, 255, 0.5) 0%,
+            rgba(255, 255, 255, 0.15) 40%,
+            transparent 70%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Idle → Static */
+.va-orb-container.idle .va-orb {
+    animation: orbIdle 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes orbIdle {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.015);
+    }
+}
+
+/* Listening → Breathing */
+.va-orb-container.listening .va-orb {
+    animation: orbListen 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    box-shadow:
+        0 8px 40px rgba(31, 61, 58, 0.15),
+        0 2px 12px rgba(31, 61, 58, 0.08),
+        inset 0 -2px 10px rgba(255, 255, 255, 0.3),
+        inset 0 2px 10px rgba(31, 61, 58, 0.1);
+    background: linear-gradient(145deg,
+            #b0cac8 0%,
+            #98b8b4 25%,
+            #a8c4c0 50%,
+            #b8d0cc 75%,
+            #c8dcd8 100%);
+}
+
+@keyframes orbListen {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.045);
+    }
+}
+
+/* Thinking → Shimmer */
+.va-orb-container.thinking .va-orb {
+    animation: orbThink 1.2s ease-in-out infinite;
+    background: linear-gradient(145deg,
+            #c0b4d8 0%,
+            #b0a8cc 25%,
+            #c4b8d8 50%,
+            #d0c4e0 75%,
+            #c8bcd6 100%);
+}
+
+@keyframes orbThink {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+}
+
+/* Speaking → Gentle pulse */
+.va-orb-container.speaking .va-orb {
+    animation: orbSpeak 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    background: linear-gradient(145deg,
+            #ccc4e4 0%,
+            #bab4d4 25%,
+            #c8c0dc 50%,
+            #d4cce8 75%,
+            #e0d8f0 100%);
+}
+
+@keyframes orbSpeak {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.025);
+    }
+
+    50% {
+        transform: scale(0.99);
+    }
+
+    75% {
+        transform: scale(1.02);
+    }
+}
+
+/* ─── Status ─── */
+.va-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.va-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
+    transition: background 0.4s ease;
+}
+
+.va-status-dot.listening {
+    background: var(--evergreen);
+    animation: statusPulse 1.5s ease-in-out infinite;
+}
+
+.va-status-dot.thinking {
+    background: var(--champagne);
+    animation: statusPulse 0.8s ease-in-out infinite;
+}
+
+.va-status-dot.speaking {
+    background: #9382c8;
+    animation: statusPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.va-status-text {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    transition: color 0.3s ease;
+}
+
+/* ─── Transcript ─── */
+.va-transcript {
+    text-align: center;
+    min-height: 48px;
+    max-width: 520px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: transcriptIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes transcriptIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.va-transcript-agent {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    color: var(--ink);
+    line-height: 1.6;
+    letter-spacing: 0.005em;
+    margin: 0;
+}
+
+.va-transcript-user {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+}
+
+/* ─── Bottom Controls ─── */
+.va-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 32px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* ─── Mic Button ─── */
+.va-mic {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.va-mic:hover:not(:disabled) {
+    border-color: var(--border-strong);
+    color: var(--ink);
+    transform: scale(1.06);
+    box-shadow: 0 4px 20px rgba(17, 24, 39, 0.06);
+}
+
+.va-mic:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.va-mic.active {
+    border-color: rgba(31, 61, 58, 0.3);
+    color: var(--evergreen);
+    background: rgba(31, 61, 58, 0.04);
+    box-shadow: 0 0 0 6px rgba(31, 61, 58, 0.06);
+}
+
+.va-mic-glow {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(31, 61, 58, 0.1);
+    animation: haloBreath 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    pointer-events: none;
+}
+
+/* ─── End Session ─── */
+.va-end {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #8b4553;
+    background: rgba(139, 69, 83, 0.06);
+    border: 1px solid rgba(139, 69, 83, 0.12);
+    padding: 12px 24px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    letter-spacing: 0.01em;
+}
+
+.va-end:hover {
+    background: rgba(139, 69, 83, 0.1);
+    border-color: rgba(139, 69, 83, 0.2);
+    transform: scale(1.02);
+}
+
+/* ─── Findings Panel Overlay ─── */
+.va-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 24, 39, 0);
+    pointer-events: none;
+    transition: background 0.4s ease;
+    z-index: 1100;
+}
+
+.va-panel-overlay.open {
+    background: rgba(17, 24, 39, 0.08);
+    pointer-events: auto;
+}
+
+/* ─── Findings Panel ─── */
+.va-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 380px;
+    max-width: 90vw;
+    background: var(--bg-primary);
+    border-left: 1px solid var(--border);
+    box-shadow: -8px 0 40px rgba(17, 24, 39, 0.06);
+    transform: translateX(100%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1150;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.va-panel.open {
+    transform: translateX(0);
+}
+
+.va-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 24px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.va-panel-header h3 {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+}
+
+.va-panel-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.va-panel-close:hover {
+    border-color: var(--border-strong);
+    color: var(--ink);
+}
+
+.va-panel-content {
+    padding: 20px 24px;
+    flex: 1;
+}
+
+.va-panel-section {
+    margin-bottom: 28px;
+}
+
+.va-panel-section h4 {
+    font-family: var(--font-body);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin: 0 0 12px;
+}
+
+.va-panel-empty {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+/* Statements */
+.va-panel-statements {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.va-panel-statements li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    animation: panelItemIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes panelItemIn {
+    from {
+        opacity: 0;
+        transform: translateX(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.va-stmt-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--text-inverse);
+    font-size: 0.5625rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.va-stmt-text {
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Pills */
+.va-panel-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.va-panel-pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--evergreen);
+    background: rgba(31, 61, 58, 0.06);
+    border: 1px solid rgba(31, 61, 58, 0.1);
+    padding: 5px 12px;
+    border-radius: 100px;
+    animation: panelItemIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Priority */
+.va-panel-priority {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+}
+
+.va-panel-priority-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.va-panel-priority.low {
+    color: #3b7a6a;
+    background: rgba(59, 122, 106, 0.06);
+    border: 1px solid rgba(59, 122, 106, 0.12);
+}
+
+.va-panel-priority.low .va-panel-priority-dot {
+    background: #3b7a6a;
+}
+
+.va-panel-priority.medium {
+    color: #a08030;
+    background: rgba(160, 128, 48, 0.06);
+    border: 1px solid rgba(160, 128, 48, 0.12);
+}
+
+.va-panel-priority.medium .va-panel-priority-dot {
+    background: #a08030;
+}
+
+.va-panel-priority.high {
+    color: #8b4553;
+    background: rgba(139, 69, 83, 0.06);
+    border: 1px solid rgba(139, 69, 83, 0.12);
+}
+
+.va-panel-priority.high .va-panel-priority-dot {
+    background: #8b4553;
+}
+
+/* Department */
+.va-panel-dept {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    padding: 12px 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+/* ─── Session Ended Screen ─── */
+.va-ended {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    animation: transcriptIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+.va-ended-icon {
+    font-size: 2rem;
+    color: var(--champagne);
+    margin-bottom: 20px;
+}
+
+.va-ended h2 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 8px;
+}
+
+.va-ended p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.va-ended-summary {
+    margin-top: 32px;
+    padding: 24px 32px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.va-ended-summary p {
+    margin: 6px 0 0;
+}
+
+.va-ended-priority {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.va-ended-priority.low {
+    color: #3b7a6a;
+    background: rgba(59, 122, 106, 0.08);
+}
+
+.va-ended-priority.medium {
+    color: #a08030;
+    background: rgba(160, 128, 48, 0.08);
+}
+
+.va-ended-priority.high {
+    color: #8b4553;
+    background: rgba(139, 69, 83, 0.08);
+}
+
+.va-ended-btn {
+    margin-top: 32px;
+}
+
+/* ─── Session Ended Stats ─── */
+.va-ended-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.va-ended-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.va-ended-stat-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.va-ended-stat-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+}
+
+/* ─── Clinical Disclaimer ─── */
+.va-disclaimer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 18px;
+    background: rgba(160, 128, 48, 0.05);
+    border: 1px solid rgba(160, 128, 48, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: #a08030;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    animation: disclaimerIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+@keyframes disclaimerIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Severity Indicator (Panel) ─── */
+.va-panel-severity {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+}
+
+.va-panel-severity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.va-panel-severity.low {
+    color: #3b7a6a;
+    background: rgba(59, 122, 106, 0.06);
+    border: 1px solid rgba(59, 122, 106, 0.12);
+}
+
+.va-panel-severity.low .va-panel-severity-dot {
+    background: #3b7a6a;
+}
+
+.va-panel-severity.moderate {
+    color: #a08030;
+    background: rgba(160, 128, 48, 0.06);
+    border: 1px solid rgba(160, 128, 48, 0.12);
+}
+
+.va-panel-severity.moderate .va-panel-severity-dot {
+    background: #a08030;
+}
+
+.va-panel-severity.high {
+    color: #8b4553;
+    background: rgba(139, 69, 83, 0.06);
+    border: 1px solid rgba(139, 69, 83, 0.12);
+}
+
+.va-panel-severity.high .va-panel-severity-dot {
+    background: #8b4553;
+}
+
+/* ─── Panel Footer Info ─── */
+.va-panel-footer-info {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.va-panel-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    letter-spacing: 0.01em;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 600px) {
+    .va-topbar {
+        padding: 16px 20px;
+    }
+
+    .va-orb-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .va-transcript-agent {
+        font-size: 1rem;
+    }
+
+    .va-controls {
+        padding: 24px 20px;
+    }
+
+    .va-mic {
+        width: 56px;
+        height: 56px;
+    }
+
+    .va-panel {
+        width: 100%;
+        max-width: 100%;
+    }
+}

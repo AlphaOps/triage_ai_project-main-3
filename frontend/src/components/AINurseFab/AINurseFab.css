@@ -1,0 +1,88 @@
+/* ─── AI Nurse Floating Action Button ─── */
+.ai-nurse-fab {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    height: 64px;
+    min-width: 64px;
+    border-radius: 100px;
+    background: var(--ink);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    gap: 0;
+    overflow: hidden;
+}
+
+.ai-nurse-fab:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    padding: 0 28px;
+    gap: 12px;
+}
+
+/* Glow Effect */
+.ai-nurse-fab-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #d6b887 0%, transparent 50%, #9382c8 100%);
+    opacity: 0.3;
+    z-index: -1;
+    filter: blur(8px);
+    transition: opacity 0.4s ease;
+}
+
+.ai-nurse-fab:hover .ai-nurse-fab-glow {
+    opacity: 0.5;
+}
+
+.ai-nurse-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-nurse-fab:hover .ai-nurse-icon {
+    transform: scale(1.1);
+}
+
+.ai-nurse-label {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0;
+}
+
+.ai-nurse-fab:hover .ai-nurse-label {
+    opacity: 1;
+    transform: translateX(0);
+    width: auto;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .ai-nurse-fab {
+        bottom: 24px;
+        right: 24px;
+        height: 56px;
+        min-width: 56px;
+    }
+}

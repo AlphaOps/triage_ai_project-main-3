@@ -1,0 +1,680 @@
+.lp-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #0f172a;
+    /* Match hero background to prevent gaps */
+    position: relative;
+}
+
+/* ── NAV (Floating Glass Pill) ── */
+.lp-nav {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: fit-content;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.05),
+        0 20px 40px -8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.lp-nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 56px;
+    padding: 0 8px 0 24px;
+    width: auto;
+}
+
+.lp-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-right: 12px;
+    border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.lp-logo-icon {
+    color: var(--ink);
+    font-size: 1rem;
+}
+
+.lp-logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.lp-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lp-nav-link {
+    padding: 8px 16px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: rgba(15, 23, 42, 0.7);
+    border-radius: 100px;
+    transition: all 0.2s ease;
+}
+
+.lp-nav-link:hover {
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.lp-nav-cta {
+    padding: 8px 16px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--ink);
+    border-radius: 100px;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.1);
+}
+
+.lp-nav-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    background: #000;
+}
+
+/* ── HERO LAYER (Sticky Unit) ── */
+.lp-hero-layer {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    width: 100%;
+}
+
+.lp-hero-bg-media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    filter: brightness(0.9);
+}
+
+.lp-hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0) 0%, rgba(15, 23, 42, 0.4) 100%);
+    z-index: 1;
+}
+
+.lp-hero-container {
+    width: 100% !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end !important;
+    /* Force right alignment */
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    padding-right: 8%;
+    /* Visual breathing room */
+    max-width: none !important;
+    /* Override any grid-container max-width */
+    margin: 0 !important;
+    /* Override centering margin */
+    text-align: right;
+    /* Ensure text containment starts from right perception, though inner block is left-aligned */
+}
+
+.lp-hero-content-right {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    /* Inner text is left-aligned */
+    text-align: left !important;
+}
+
+/* ── Content Layer (Slides Over Hero) ── */
+.lp-content-layer {
+    position: relative;
+    z-index: 10;
+    background: #fdfdfd;
+    min-height: 100vh;
+    margin-top: 0;
+    /* Ensures it starts immediately after hero flow */
+    padding-top: 2px;
+    /* Minimal padding to prevent margin collapse */
+    /* Clean cut-over transition with premium shadow */
+    box-shadow: 0 -30px 120px rgba(0, 0, 0, 0.3);
+    transform: translate3d(0, 0, 0);
+}
+
+.glass-badge {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lp-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.lp-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    /* Slightly smaller for better composition on right */
+    line-height: 1.05;
+    font-weight: 400;
+    /* Thinner weight */
+    letter-spacing: -0.03em;
+    color: white;
+    margin-bottom: 24px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.lp-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin-bottom: 40px;
+    font-weight: 300;
+    /* Leaner, premium feel */
+}
+
+/* Apple Style Button */
+.lp-hero-btns {
+    margin-bottom: 56px;
+}
+
+.btn-apple-style {
+    background: #0f172a;
+    /* Dark Navy */
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-apple-style:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    background: #1e293b;
+}
+
+.btn-apple-style .arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-apple-style:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* Floating Metrics Pill */
+.lp-metrics-pill {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    /* Very subtle translucent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    /* Pill shape */
+    padding: 10px 24px;
+    gap: 0;
+    /* dividers handle spacing */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+}
+
+.metric-val {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    color: white;
+    font-weight: 500;
+}
+
+.metric-lbl {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.metric-icon {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.metric-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ── SECTIONS (Overlapping) ── */
+/* Section Headers */
+.lp-section-tag {
+    display: block;
+    text-align: center;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 12px;
+}
+
+.lp-section-title {
+    display: block;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-size: 2.75rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 64px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lp-section {
+    background: var(--bg-primary);
+    /* Needs opaque background to cover hero */
+    position: relative;
+    z-index: 20;
+    padding: 120px 0;
+}
+
+/* Ensure the first section has a clean top edge */
+.lp-section:first-of-type {
+    margin-top: -24px;
+    border-radius: 40px 40px 0 0;
+    box-shadow: 0 -24px 80px rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Steps */
+.lp-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    /* Increased slightly for airiness */
+}
+
+.lp-step {
+    position: relative;
+    padding: 48px 40px;
+    background: #fdfdfd;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 32px;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow: hidden;
+}
+
+/* Ambient Glow - Subtle diffused light */
+.lp-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 0%,
+            rgba(214, 184, 135, 0.1),
+            transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.lp-step:hover {
+    transform: translateY(-8px);
+    background: #fff;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    border-color: rgba(214, 184, 135, 0.3);
+}
+
+.lp-step:hover::before {
+    opacity: 1;
+}
+
+.lp-step-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.lp-step:hover .lp-step-num {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.lp-step h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.lp-step:hover h3 {
+    color: #000;
+    /* Slightly darker/sharper */
+}
+
+.lp-step p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.85;
+}
+
+.lp-step:hover p {
+    opacity: 1;
+    color: var(--text-primary);
+}
+
+/* Portals */
+.lp-portals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.lp-portal {
+    padding: 44px 36px;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.lp-portal:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.lp-portal-icon {
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+}
+
+.lp-portal h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+}
+
+.lp-portal p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 20px;
+}
+
+.lp-portal-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* Features */
+.lp-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.lp-feature {
+    padding: 36px 32px;
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.lp-feature:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.lp-feature-icon {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.lp-feature h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.lp-feature p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/* Safety */
+.lp-safety-section {
+    background: var(--bg-primary);
+    padding: 160px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.lp-safety-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.lp-safety-section .lp-section-tag,
+.lp-safety-section .lp-section-title {
+    text-align: left;
+    margin-left: 0;
+}
+
+.lp-safety-section .lp-section-title {
+    max-width: 600px;
+    margin-bottom: 56px;
+}
+
+.lp-safety-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.lp-safety-card {
+    padding: 48px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 32px;
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.lp-safety-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 100% 0%, rgba(214, 184, 135, 0.05), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.lp-safety-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.06);
+    border-color: rgba(214, 184, 135, 0.25);
+}
+
+.lp-safety-card:hover::before {
+    opacity: 1;
+}
+
+.lp-safety-check {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.1);
+    color: #166534;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+}
+
+.lp-safety-card h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--ink);
+}
+
+.lp-safety-card p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+}
+
+/* ── FOOTER ── */
+.lp-footer {
+    background: var(--ink);
+    color: var(--text-inverse);
+    padding: 80px 0 40px;
+}
+
+.lp-footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.lp-footer-brand {
+    max-width: 280px;
+}
+
+.lp-footer-brand .lp-logo-icon {
+    color: var(--gold);
+}
+
+.lp-footer-brand .lp-logo-text {
+    color: var(--text-inverse);
+}
+
+.lp-footer-brand p {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.lp-footer-links {
+    display: flex;
+    gap: 60px;
+    margin-left: auto;
+}
+
+.lp-footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lp-footer-col h5 {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.35);
+    margin-bottom: 4px;
+}
+
+.lp-footer-col button {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.65);
+    text-align: left;
+    transition: color var(--duration-fast);
+}
+
+.lp-footer-col button:hover {
+    color: white;
+}
+
+.lp-footer-bottom {
+    width: 100%;
+    padding-top: 40px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lp-footer-bottom span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+}

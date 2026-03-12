@@ -1,0 +1,484 @@
+.pd {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ─── Top Right Navigation ─── */
+.pd-top-right {
+    position: fixed;
+    top: 32px;
+    right: 40px;
+    z-index: 1001;
+    /* Above navbar */
+}
+
+.pd-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-pill);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.pd-logout-btn:hover {
+    background: #fff;
+    color: #dc2626;
+    border-color: rgba(220, 38, 38, 0.2);
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.1);
+    transform: translateY(-1px);
+}
+
+.pd-logout-btn svg {
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+}
+
+.pd-logout-btn:hover svg {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
+/* ─── Immersive Workspace Layout ─── */
+.pd-workspace {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 160px 40px 40px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 80px;
+    align-items: center;
+    min-height: 60vh;
+}
+
+/* ─── Left: Hero Content ─── */
+.pd-hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 680px;
+}
+
+.pd-greeting-sub {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: -16px;
+    display: block;
+}
+
+.pd-title {
+    font-family: var(--font-serif);
+    font-size: 4.5rem;
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+}
+
+.pd-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 520px;
+    font-weight: 300;
+}
+
+/* ─── CTA Area ─── */
+.pd-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.btn-start-assess {
+    background: var(--ink);
+    /* Deep Navy */
+    color: #fff;
+    font-size: 1.125rem;
+    font-weight: 500;
+    padding: 18px 40px;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.2);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-start-assess:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 12px 32px rgba(17, 24, 39, 0.3);
+    background: #000;
+}
+
+.btn-voice-link {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-voice-link:hover {
+    color: var(--ink);
+    border-color: var(--ink);
+}
+
+/* ─── Right: Visual Area (Abstract Art) ─── */
+.pd-visual-area {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Abstract Circle/Orb with Image */
+.pd-visual-orb {
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    animation: float 8s ease-in-out infinite;
+    box-shadow:
+        0 40px 80px -20px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pd-orb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.05);
+    transition: transform 12s linear;
+}
+
+.pd-visual-orb:hover .pd-orb-img {
+    transform: scale(1.1);
+}
+
+.pd-orb-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(24, 24, 27, 0.3) 100%);
+    pointer-events: none;
+}
+
+/* Creative Glass Button over Orb */
+.btn-specialties-glass {
+    position: absolute;
+    bottom: 40px;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: var(--radius-pill);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.btn-specialties-glass:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* New Find Specialist Button in Hero */
+.btn-find-spec {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.btn-find-spec:hover {
+    background: var(--bg-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.btn-scan-report {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.btn-scan-report:hover {
+    background: var(--bg-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.btn-scan-report .icon {
+    font-size: 1.25rem;
+}
+
+/* Decorative Ring */
+.pd-visual-ring {
+    position: absolute;
+    width: 580px;
+    height: 580px;
+    border-radius: 50%;
+    border: 1px solid rgba(214, 184, 135, 0.3);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: spin 60s linear infinite;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.pd-visual-ring::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold);
+}
+
+/* ─── Doctors Nearby Section ─── */
+.pd-doctors-section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.pd-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.pd-section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--ink);
+    margin: 0;
+}
+
+.btn-view-all {
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9375rem;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.btn-view-all:hover {
+    border-color: var(--gold);
+}
+
+.pd-doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.pd-doctor-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    /* Transition is handled by framer-motion now, but keeping for fallback */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Framer motion handles the hover transform, we handle specific color/shadow updates */
+.pd-doctor-card:hover {
+    border-color: rgba(214, 184, 135, 0.4);
+}
+
+.pd-doc-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.pd-doc-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pd-doc-info h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.pd-doc-info p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.pd-doc-meta {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.pd-doc-meta .rating {
+    color: #F59E0B;
+    background: rgba(245, 158, 11, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.pd-doc-meta .dist {
+    color: var(--text-tertiary);
+    background: rgba(0, 0, 0, 0.03);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+    .pd-workspace {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+    }
+
+    .pd-doctor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pd-title {
+        font-size: 3rem;
+    }
+
+    .pd-doctor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pd-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* ─── Animations ─── */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.1s;
+}
+
+.delay-2 {
+    animation-delay: 0.2s;
+}
+
+.delay-3 {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

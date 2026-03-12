@@ -1,0 +1,36 @@
+.card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    transition: all var(--transition-smooth);
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.card-padding-sm {
+    padding: 16px;
+}
+
+.card-padding-md {
+    padding: 24px;
+}
+
+.card-padding-lg {
+    padding: 32px;
+}
+
+.card-padding-none {
+    padding: 0;
+}

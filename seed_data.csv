@@ -1,0 +1,11 @@
+Patient_ID,Age,Gender,Symptoms,Blood_Pressure,Heart_Rate,Temperature,SpO2,BMI,Allergies,Current_Medication,Pre_Existing_Conditions,Risk_Level
+P1,65,Male,chest pain,160,115,99.2,91,29,none,Yes,diabetes,High
+P2,22,Female,cough,110,78,100.4,97,21,dust,No,none,Low
+P3,48,Male,fever,130,90,102.1,95,27,none,Yes,hypertension,Medium
+P4,70,Female,shortness of breath,170,120,98.9,88,31,drug,Yes,asthma,High
+P5,35,Male,headache,120,72,99.0,98,23,none,No,none,Low
+P6,55,Female,chest pain,150,105,99.5,92,30,penicillin,Yes,diabetes,High
+P7,29,Male,fever,118,88,101.8,96,24,none,No,none,Medium
+P8,62,Female,dizziness,145,98,99.3,94,28,food,Yes,hypertension,Medium
+P9,40,Male,fatigue,125,85,98.7,97,26,none,No,none,Low
+P10,75,Female,chest pain,180,125,100.1,89,33,drug,Yes,diabetes,High

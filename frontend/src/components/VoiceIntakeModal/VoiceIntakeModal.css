@@ -1,0 +1,208 @@
+/* ─── Voice Intake Modal Overlay ─── */
+.voice-intake-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+.voice-intake-modal {
+    width: 600px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 32px;
+    padding: 64px 40px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    animation: scaleIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* ─── Steps Indicator ─── */
+.voice-steps {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.voice-step {
+    width: 40px;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.voice-step.active {
+    background: var(--ink);
+}
+
+.voice-step.completed {
+    background: var(--success);
+}
+
+/* ─── Content ─── */
+.voice-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 16px;
+    color: var(--ink);
+}
+
+.voice-instruction {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+}
+
+/* ─── Mic Visualization ─── */
+.voice-mic-area {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 40px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.voice-mic-icon {
+    font-size: 3rem;
+    color: var(--ink);
+    z-index: 2;
+}
+
+.voice-mic-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    opacity: 0;
+}
+
+.voice-mic-area.listening .voice-mic-pulse {
+    animation: ripple 2s infinite;
+}
+
+.voice-mic-area.listening {
+    background: var(--ink);
+}
+
+.voice-mic-area.listening .voice-mic-icon {
+    color: #fff;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* ─── Transcription ─── */
+.voice-transcript {
+    min-height: 80px;
+    font-size: 1.25rem;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
+
+/* ─── Controls ─── */
+.voice-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-voice-secondary {
+    padding: 12px 24px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: transparent;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-voice-secondary:hover {
+    background: var(--bg-primary);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ─── New Primary Button ─── */
+.btn-voice-primary {
+    padding: 12px 24px;
+    border: none;
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-voice-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    background: #000;
+}
+
+/* ─── Summary Section ─── */
+.voice-summary {
+    text-align: center;
+    color: var(--ink);
+    margin-bottom: 32px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.voice-summary p {
+    font-size: 1.125rem;
+    margin-bottom: 24px;
+}
